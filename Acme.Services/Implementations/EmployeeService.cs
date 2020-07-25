@@ -2,33 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 using Acme.DataAccess.Implementations;
+using Acme.DataAccess.Interfaces;
 using Acme.Models;
 
 namespace Acme.Services.Implementations
 {
     public class EmployeeService
     {
+        protected IEmployeeRepository EmployeeRepository;
+        
+        public EmployeeService()
+        {
+            EmployeeRepository = new EmployeeRepository();
+        }
+
         public IEnumerable<Employee> GetEmployees()
         {
-            var employeeRepository = new EmployeeRepository();
+            return EmployeeRepository.GetEmployees();
+        }
 
-            return employeeRepository.GetEmployees();
+        public IEnumerable<Employee> GetEmployees(string searchText)
+        {
+            return EmployeeRepository.GetEmployees(searchText);
         }
 
         public void SeedEmployeesData()
         {
-            var employeeRepository = new EmployeeRepository();
-
-            if (employeeRepository.GetEmployees().Any())
+            if (EmployeeRepository.GetEmployees().Any())
             {
                 return;
             }
 
-            employeeRepository.Add(new Employee { Firstname = "Dave", Surname = "Smith", Email = "dave.smith@ert.com", StarDate = DateTime.Today });
-            employeeRepository.Add(new Employee { Firstname = "Fred", Surname = "Browen", Email = "fred.browen@ert.com", StarDate = DateTime.Today });
-            employeeRepository.Add(new Employee { Firstname = "Sarah", Surname = "Pinnock", Email = "sarah.pinnock@ert.com", StarDate = DateTime.Today });
-            employeeRepository.Add(new Employee { Firstname = "Louise", Surname = "Greene", Email = "louise.greene@ert.com", StarDate = DateTime.Today });
-            employeeRepository.Add(new Employee { Firstname = "Dave", Surname = "Wibble", Email = "dave.wibble@ert.com", StarDate = DateTime.Today });
+            EmployeeRepository.Add(CreateTestEmployee("Dave", "Smith"));
+            EmployeeRepository.Add(CreateTestEmployee("Fred", "Brown"));
+            EmployeeRepository.Add(CreateTestEmployee("Louise", "Pinnock"));
+            EmployeeRepository.Add(CreateTestEmployee("Dave", "Ball"));
+            EmployeeRepository.Add(CreateTestEmployee("Louise", "Greene"));
+            EmployeeRepository.Add(CreateTestEmployee("Alan", "Pullman"));
+            EmployeeRepository.Add(CreateTestEmployee("Brenda", "Storey"));
+            EmployeeRepository.Add(CreateTestEmployee("Carol", "Soloman"));
+            EmployeeRepository.Add(CreateTestEmployee("Dale", "Simpson"));
+            EmployeeRepository.Add(CreateTestEmployee("Emma", "Smith"));
+            EmployeeRepository.Add(CreateTestEmployee("Fiona", "Brown"));
+            EmployeeRepository.Add(CreateTestEmployee("George", "Little"));
+            EmployeeRepository.Add(CreateTestEmployee("Harry", "Smith"));
+            EmployeeRepository.Add(CreateTestEmployee("Ian", "Wibble"));
+            EmployeeRepository.Add(CreateTestEmployee("Kevin", "Brown"));
+        }
+        
+        public void AddEmployee(Employee employee)
+        {
+            EmployeeRepository.Add(employee);
+        }
+
+        protected Employee CreateTestEmployee(string firstname, string surname)
+        {
+            var employee = new Employee
+            {
+                Firstname = firstname,
+                Surname = surname,
+                WorkEmail = $"{firstname.ToLower()}.{surname.ToLower()}@ert.com",
+                PersonalEmail = $"{firstname.ToLower()}.{surname.ToLower()}@hotmail.com",
+                StartDate = DateTime.Today
+            };
+
+            return employee;
         }
     }
 }

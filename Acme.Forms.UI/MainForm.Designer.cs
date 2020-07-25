@@ -35,22 +35,40 @@
             this.Username = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
-            this.UsersTab = new System.Windows.Forms.TabPage();
+            this.EmployeesTab = new System.Windows.Forms.TabPage();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.SearchText = new System.Windows.Forms.TextBox();
+            this.SearchLabel = new System.Windows.Forms.Label();
             this.UsersGrid = new System.Windows.Forms.DataGridView();
+            this.AddEmployeesTab = new System.Windows.Forms.TabPage();
+            this.StartDate = new System.Windows.Forms.DateTimePicker();
+            this.AddEmployeeButton = new System.Windows.Forms.Button();
+            this.StartDateLabel = new System.Windows.Forms.Label();
+            this.PersonalEmail = new System.Windows.Forms.TextBox();
+            this.PersonalEmailLabel = new System.Windows.Forms.Label();
+            this.WorkEmail = new System.Windows.Forms.TextBox();
+            this.WorkEmailLabel = new System.Windows.Forms.Label();
+            this.Surname = new System.Windows.Forms.TextBox();
+            this.SurnameLabel = new System.Windows.Forms.Label();
+            this.Firstname = new System.Windows.Forms.TextBox();
+            this.FirstnameLabel = new System.Windows.Forms.Label();
+            this.ShowAllButton = new System.Windows.Forms.Button();
             this.UserTabs.SuspendLayout();
             this.LogonTab.SuspendLayout();
-            this.UsersTab.SuspendLayout();
+            this.EmployeesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).BeginInit();
+            this.AddEmployeesTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // UserTabs
             // 
             this.UserTabs.Controls.Add(this.LogonTab);
-            this.UserTabs.Controls.Add(this.UsersTab);
+            this.UserTabs.Controls.Add(this.EmployeesTab);
+            this.UserTabs.Controls.Add(this.AddEmployeesTab);
             this.UserTabs.Location = new System.Drawing.Point(14, 13);
             this.UserTabs.Name = "UserTabs";
             this.UserTabs.SelectedIndex = 0;
-            this.UserTabs.Size = new System.Drawing.Size(773, 400);
+            this.UserTabs.Size = new System.Drawing.Size(874, 496);
             this.UserTabs.TabIndex = 0;
             this.UserTabs.SelectedIndexChanged += new System.EventHandler(this.UserTabs_SelectedIndexChanged);
             // 
@@ -64,7 +82,7 @@
             this.LogonTab.Location = new System.Drawing.Point(4, 22);
             this.LogonTab.Name = "LogonTab";
             this.LogonTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LogonTab.Size = new System.Drawing.Size(765, 374);
+            this.LogonTab.Size = new System.Drawing.Size(866, 470);
             this.LogonTab.TabIndex = 0;
             this.LogonTab.Text = "Logon";
             this.LogonTab.UseVisualStyleBackColor = true;
@@ -119,41 +137,217 @@
             this.UsernameLabel.TabIndex = 0;
             this.UsernameLabel.Text = "Username";
             // 
-            // UsersTab
+            // EmployeesTab
             // 
-            this.UsersTab.Controls.Add(this.UsersGrid);
-            this.UsersTab.Location = new System.Drawing.Point(4, 22);
-            this.UsersTab.Name = "UsersTab";
-            this.UsersTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UsersTab.Size = new System.Drawing.Size(765, 374);
-            this.UsersTab.TabIndex = 1;
-            this.UsersTab.Text = "User Management";
-            this.UsersTab.UseVisualStyleBackColor = true;
+            this.EmployeesTab.Controls.Add(this.ShowAllButton);
+            this.EmployeesTab.Controls.Add(this.SearchButton);
+            this.EmployeesTab.Controls.Add(this.SearchText);
+            this.EmployeesTab.Controls.Add(this.SearchLabel);
+            this.EmployeesTab.Controls.Add(this.UsersGrid);
+            this.EmployeesTab.Location = new System.Drawing.Point(4, 22);
+            this.EmployeesTab.Name = "EmployeesTab";
+            this.EmployeesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EmployeesTab.Size = new System.Drawing.Size(866, 470);
+            this.EmployeesTab.TabIndex = 1;
+            this.EmployeesTab.Text = "List + Search Employees";
+            this.EmployeesTab.UseVisualStyleBackColor = true;
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchButton.Location = new System.Drawing.Point(329, 23);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(98, 27);
+            this.SearchButton.TabIndex = 15;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // SearchText
+            // 
+            this.SearchText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchText.Location = new System.Drawing.Point(91, 25);
+            this.SearchText.MaxLength = 50;
+            this.SearchText.Name = "SearchText";
+            this.SearchText.Size = new System.Drawing.Size(223, 22);
+            this.SearchText.TabIndex = 6;
+            // 
+            // SearchLabel
+            // 
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchLabel.Location = new System.Drawing.Point(25, 28);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(51, 16);
+            this.SearchLabel.TabIndex = 5;
+            this.SearchLabel.Text = "Search";
             // 
             // UsersGrid
             // 
             this.UsersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGrid.Location = new System.Drawing.Point(15, 15);
+            this.UsersGrid.Location = new System.Drawing.Point(15, 70);
             this.UsersGrid.Name = "UsersGrid";
-            this.UsersGrid.Size = new System.Drawing.Size(734, 339);
+            this.UsersGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.UsersGrid.Size = new System.Drawing.Size(845, 384);
             this.UsersGrid.TabIndex = 0;
+            // 
+            // AddEmployeesTab
+            // 
+            this.AddEmployeesTab.Controls.Add(this.StartDate);
+            this.AddEmployeesTab.Controls.Add(this.AddEmployeeButton);
+            this.AddEmployeesTab.Controls.Add(this.StartDateLabel);
+            this.AddEmployeesTab.Controls.Add(this.PersonalEmail);
+            this.AddEmployeesTab.Controls.Add(this.PersonalEmailLabel);
+            this.AddEmployeesTab.Controls.Add(this.WorkEmail);
+            this.AddEmployeesTab.Controls.Add(this.WorkEmailLabel);
+            this.AddEmployeesTab.Controls.Add(this.Surname);
+            this.AddEmployeesTab.Controls.Add(this.SurnameLabel);
+            this.AddEmployeesTab.Controls.Add(this.Firstname);
+            this.AddEmployeesTab.Controls.Add(this.FirstnameLabel);
+            this.AddEmployeesTab.Location = new System.Drawing.Point(4, 22);
+            this.AddEmployeesTab.Name = "AddEmployeesTab";
+            this.AddEmployeesTab.Size = new System.Drawing.Size(866, 470);
+            this.AddEmployeesTab.TabIndex = 2;
+            this.AddEmployeesTab.Text = "Add Employee";
+            this.AddEmployeesTab.UseVisualStyleBackColor = true;
+            this.AddEmployeesTab.Click += new System.EventHandler(this.AddEmployeesTab_Click);
+            // 
+            // StartDate
+            // 
+            this.StartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartDate.Location = new System.Drawing.Point(163, 244);
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Size = new System.Drawing.Size(151, 24);
+            this.StartDate.TabIndex = 15;
+            // 
+            // AddEmployeeButton
+            // 
+            this.AddEmployeeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmployeeButton.Location = new System.Drawing.Point(163, 297);
+            this.AddEmployeeButton.Name = "AddEmployeeButton";
+            this.AddEmployeeButton.Size = new System.Drawing.Size(129, 33);
+            this.AddEmployeeButton.TabIndex = 14;
+            this.AddEmployeeButton.Text = "Add Employee";
+            this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
+            // 
+            // StartDateLabel
+            // 
+            this.StartDateLabel.AutoSize = true;
+            this.StartDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartDateLabel.Location = new System.Drawing.Point(44, 244);
+            this.StartDateLabel.Name = "StartDateLabel";
+            this.StartDateLabel.Size = new System.Drawing.Size(67, 16);
+            this.StartDateLabel.TabIndex = 11;
+            this.StartDateLabel.Text = "Start Date";
+            // 
+            // PersonalEmail
+            // 
+            this.PersonalEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PersonalEmail.Location = new System.Drawing.Point(163, 196);
+            this.PersonalEmail.MaxLength = 255;
+            this.PersonalEmail.Name = "PersonalEmail";
+            this.PersonalEmail.Size = new System.Drawing.Size(296, 22);
+            this.PersonalEmail.TabIndex = 10;
+            // 
+            // PersonalEmailLabel
+            // 
+            this.PersonalEmailLabel.AutoSize = true;
+            this.PersonalEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PersonalEmailLabel.Location = new System.Drawing.Point(44, 199);
+            this.PersonalEmailLabel.Name = "PersonalEmailLabel";
+            this.PersonalEmailLabel.Size = new System.Drawing.Size(99, 16);
+            this.PersonalEmailLabel.TabIndex = 9;
+            this.PersonalEmailLabel.Text = "Personal Email";
+            // 
+            // WorkEmail
+            // 
+            this.WorkEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WorkEmail.Location = new System.Drawing.Point(163, 150);
+            this.WorkEmail.MaxLength = 255;
+            this.WorkEmail.Name = "WorkEmail";
+            this.WorkEmail.Size = new System.Drawing.Size(296, 22);
+            this.WorkEmail.TabIndex = 8;
+            // 
+            // WorkEmailLabel
+            // 
+            this.WorkEmailLabel.AutoSize = true;
+            this.WorkEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WorkEmailLabel.Location = new System.Drawing.Point(44, 153);
+            this.WorkEmailLabel.Name = "WorkEmailLabel";
+            this.WorkEmailLabel.Size = new System.Drawing.Size(77, 16);
+            this.WorkEmailLabel.TabIndex = 7;
+            this.WorkEmailLabel.Text = "Work Email";
+            // 
+            // Surname
+            // 
+            this.Surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Surname.Location = new System.Drawing.Point(163, 101);
+            this.Surname.MaxLength = 50;
+            this.Surname.Name = "Surname";
+            this.Surname.Size = new System.Drawing.Size(223, 22);
+            this.Surname.TabIndex = 6;
+            // 
+            // SurnameLabel
+            // 
+            this.SurnameLabel.AutoSize = true;
+            this.SurnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SurnameLabel.Location = new System.Drawing.Point(44, 104);
+            this.SurnameLabel.Name = "SurnameLabel";
+            this.SurnameLabel.Size = new System.Drawing.Size(62, 16);
+            this.SurnameLabel.TabIndex = 5;
+            this.SurnameLabel.Text = "Surname";
+            // 
+            // Firstname
+            // 
+            this.Firstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Firstname.Location = new System.Drawing.Point(163, 57);
+            this.Firstname.MaxLength = 50;
+            this.Firstname.Name = "Firstname";
+            this.Firstname.Size = new System.Drawing.Size(223, 22);
+            this.Firstname.TabIndex = 4;
+            // 
+            // FirstnameLabel
+            // 
+            this.FirstnameLabel.AutoSize = true;
+            this.FirstnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstnameLabel.Location = new System.Drawing.Point(44, 60);
+            this.FirstnameLabel.Name = "FirstnameLabel";
+            this.FirstnameLabel.Size = new System.Drawing.Size(67, 16);
+            this.FirstnameLabel.TabIndex = 3;
+            this.FirstnameLabel.Text = "Firstname";
+            // 
+            // ShowAllButton
+            // 
+            this.ShowAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowAllButton.Location = new System.Drawing.Point(442, 23);
+            this.ShowAllButton.Name = "ShowAllButton";
+            this.ShowAllButton.Size = new System.Drawing.Size(186, 27);
+            this.ShowAllButton.TabIndex = 16;
+            this.ShowAllButton.Text = "Show All Employees";
+            this.ShowAllButton.UseVisualStyleBackColor = true;
+            this.ShowAllButton.Click += new System.EventHandler(this.ShowAllButton_Click);
             // 
             // MainForm
             // 
+            this.AcceptButton = this.LogonButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 421);
+            this.ClientSize = new System.Drawing.Size(900, 521);
             this.Controls.Add(this.UserTabs);
-            this.MaximumSize = new System.Drawing.Size(816, 460);
-            this.MinimumSize = new System.Drawing.Size(816, 460);
+            this.MaximumSize = new System.Drawing.Size(916, 560);
+            this.MinimumSize = new System.Drawing.Size(916, 560);
             this.Name = "MainForm";
             this.Text = "Acme User Management copyright 1980";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.UserTabs.ResumeLayout(false);
             this.LogonTab.ResumeLayout(false);
             this.LogonTab.PerformLayout();
-            this.UsersTab.ResumeLayout(false);
+            this.EmployeesTab.ResumeLayout(false);
+            this.EmployeesTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).EndInit();
+            this.AddEmployeesTab.ResumeLayout(false);
+            this.AddEmployeesTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -162,13 +356,29 @@
 
         private System.Windows.Forms.TabControl UserTabs;
         private System.Windows.Forms.TabPage LogonTab;
-        private System.Windows.Forms.TabPage UsersTab;
+        private System.Windows.Forms.TabPage EmployeesTab;
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.Button LogonButton;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.DataGridView UsersGrid;
+        private System.Windows.Forms.TabPage AddEmployeesTab;
+        private System.Windows.Forms.Label StartDateLabel;
+        private System.Windows.Forms.TextBox PersonalEmail;
+        private System.Windows.Forms.Label PersonalEmailLabel;
+        private System.Windows.Forms.TextBox WorkEmail;
+        private System.Windows.Forms.Label WorkEmailLabel;
+        private System.Windows.Forms.TextBox Surname;
+        private System.Windows.Forms.Label SurnameLabel;
+        private System.Windows.Forms.TextBox Firstname;
+        private System.Windows.Forms.Label FirstnameLabel;
+        private System.Windows.Forms.Button AddEmployeeButton;
+        private System.Windows.Forms.DateTimePicker StartDate;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.TextBox SearchText;
+        private System.Windows.Forms.Label SearchLabel;
+        private System.Windows.Forms.Button ShowAllButton;
     }
 }
 

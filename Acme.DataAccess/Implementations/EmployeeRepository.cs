@@ -15,6 +15,16 @@ namespace Acme.DataAccess.Implementations
             }
         }
 
+        public IEnumerable<Employee> GetEmployees(string searchText)
+        {
+            using (var context = new AcmeDbContext())
+            {
+                return context.Employees
+                    .Where(e => e.Firstname.Contains(searchText) || e.Surname.Contains(searchText) || e.WorkEmail.Contains(searchText) || e.PersonalEmail.Contains(searchText))
+                    .ToList();
+            }
+        }
+
         public void Add(Employee employee)
         {
             using (var context = new AcmeDbContext())

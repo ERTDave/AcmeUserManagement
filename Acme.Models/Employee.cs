@@ -10,9 +10,11 @@ namespace Acme.Models
 
         public string Surname { get; set; }
 
-        public string Email { get; set; }
+        public string WorkEmail { get; set; }
 
-        public DateTime StarDate { get; set; }
+        public string PersonalEmail { get; set; }
+
+        public DateTime StartDate { get; set; }
 
         public override string ToString()
         {

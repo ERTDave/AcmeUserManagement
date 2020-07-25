@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Acme.Models;
 using Acme.Services.Implementations;
 
 namespace Acme.Forms.UI
@@ -23,7 +24,7 @@ namespace Acme.Forms.UI
             {
                 UserTabs.SelectedIndex = 0;
 
-                MessageBox.Show(@"You must Logon to acces this tab", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"You must Logon to acces this area", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             if (UserTabs.SelectedIndex == 0 && IsAuthenticated)
@@ -69,6 +70,47 @@ namespace Acme.Forms.UI
             ApplicationUserService.SeedApplicationUsers();
 
             EmployeeService.SeedEmployeesData();
+        }
+
+        private void AddEmployeesTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        {
+            var employee = new Employee
+            {
+                Firstname = Firstname.Text,
+                Surname = Surname.Text,
+                WorkEmail = WorkEmail.Text,
+                PersonalEmail = PersonalEmail.Text,
+                StartDate = DateTime.Parse(StartDate.Text)
+            };
+
+            EmployeeService.AddEmployee(employee);
+
+            Firstname.Text = "";
+            Surname.Text = "";
+            WorkEmail.Text = "";
+            PersonalEmail.Text = "";
+            StartDate.Text = "";
+
+            MessageBox.Show(@"The employee has been sucessfully added", @"Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            var employees = EmployeeService.GetEmployees(SearchText.Text);
+
+            UsersGrid.DataSource = employees;
+        }
+
+        private void ShowAllButton_Click(object sender, EventArgs e)
+        {
+            var employees = EmployeeService.GetEmployees();
+
+            UsersGrid.DataSource = employees;
         }
     }
 }
