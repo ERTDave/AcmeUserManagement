@@ -210,7 +210,6 @@
             this.AddEmployeesTab.TabIndex = 2;
             this.AddEmployeesTab.Text = "Add Employee";
             this.AddEmployeesTab.UseVisualStyleBackColor = true;
-            this.AddEmployeesTab.Click += new System.EventHandler(this.AddEmployeesTab_Click);
             // 
             // StartDate
             // 

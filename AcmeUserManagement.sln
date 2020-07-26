@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Services.Tests", "Acme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Forms.UI", "Acme.Forms.UI\Acme.Forms.UI.csproj", "{3A9BC901-001B-4E39-BC84-76DC1430C958}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{EA209E98-EE5A-4BEE-8214-B382E3678648}"
+	ProjectSection(SolutionItems) = preProject
+		CodingMistakes.docx = CodingMistakes.docx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

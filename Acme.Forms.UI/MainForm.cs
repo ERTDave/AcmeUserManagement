@@ -24,7 +24,7 @@ namespace Acme.Forms.UI
             {
                 UserTabs.SelectedIndex = 0;
 
-                MessageBox.Show(@"You must Logon to acces this area", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"You must Logon to acces this area", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             if (UserTabs.SelectedIndex == 0 && IsAuthenticated)
@@ -37,14 +37,14 @@ namespace Acme.Forms.UI
         {
             if (string.IsNullOrEmpty(Username.Text))
             {
-                MessageBox.Show(@"Please enter a username", @"Username Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Please enter a username", @"Username Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;
             }
 
             if (string.IsNullOrEmpty(Password.Text))
             {
-                MessageBox.Show(@"Please enter a password", @"Username Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Please enter a password", @"Username Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;
             }
@@ -61,7 +61,7 @@ namespace Acme.Forms.UI
             }
             else
             {
-                MessageBox.Show(@"Invalid Credentials, please try again", @"Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Invalid Credentials, please try again", @"Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -70,11 +70,6 @@ namespace Acme.Forms.UI
             ApplicationUserService.SeedApplicationUsers();
 
             EmployeeService.SeedEmployeesData();
-        }
-
-        private void AddEmployeesTab_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
@@ -88,15 +83,24 @@ namespace Acme.Forms.UI
                 StartDate = DateTime.Parse(StartDate.Text)
             };
 
-            EmployeeService.AddEmployee(employee);
+            var errorMessages = employee.Validate();
 
-            Firstname.Text = "";
-            Surname.Text = "";
-            WorkEmail.Text = "";
-            PersonalEmail.Text = "";
-            StartDate.Text = "";
+            if (errorMessages.IsValid)
+            {
+                EmployeeService.AddEmployee(employee);
 
-            MessageBox.Show(@"The employee has been sucessfully added", @"Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Firstname.Text = "";
+                Surname.Text = "";
+                WorkEmail.Text = "";
+                PersonalEmail.Text = "";
+                StartDate.Text = "";
+
+                MessageBox.Show(@"The employee has been sucessfully added", @"Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(@"There are some problems with the form as follow" + Environment.NewLine + Environment.NewLine + string.Join(Environment.NewLine, errorMessages.Errors) , @"Form Problems", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
