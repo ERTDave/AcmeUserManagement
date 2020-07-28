@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Acme.Models
 {
@@ -14,12 +15,17 @@ namespace Acme.Models
 
         public string PersonalEmail { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         public override string ToString()
         {
             return $"{Id} {Firstname} {Surname}";
         }
+
+        [ForeignKey("EnteredByUser")]
+        public int EnteredByUserId { get; set; }
+        
+        public ApplicationUser EnteredByUser { get; set; }
 
         public ErrorMessages Validate()
         {
@@ -87,6 +93,16 @@ namespace Acme.Models
                 {
                     errorMessage.Errors.Add("The personal email field must contain a period");
                 }
+            }
+
+            if (!string.IsNullOrEmpty(WorkEmail) && WorkEmail == PersonalEmail)
+            {
+                errorMessage.Errors.Add("The work and personal email fields cannot be the same");
+            }
+
+            if (!StartDate.HasValue)
+            {
+                errorMessage.Errors.Add("A start date is required");
             }
 
             return errorMessage;

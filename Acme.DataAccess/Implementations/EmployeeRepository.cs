@@ -2,6 +2,7 @@
 using System.Linq;
 using Acme.DataAccess.Interfaces;
 using Acme.Models;
+using System.Data.Entity;
 
 namespace Acme.DataAccess.Implementations
 {
@@ -11,7 +12,7 @@ namespace Acme.DataAccess.Implementations
         {
             using (var context = new AcmeDbContext())
             {
-                return context.Employees.ToList();
+                return context.Employees.Include(e => e.EnteredByUser).ToList();
             }
         }
 
@@ -19,9 +20,17 @@ namespace Acme.DataAccess.Implementations
         {
             using (var context = new AcmeDbContext())
             {
-                return context.Employees
+                var results = context.Employees
                     .Where(e => e.Firstname.Contains(searchText) || e.Surname.Contains(searchText) || e.WorkEmail.Contains(searchText) || e.PersonalEmail.Contains(searchText))
                     .ToList();
+
+
+                foreach (var user in results)
+                {
+                    user.EnteredByUser = context.ApplicationUsers.FirstOrDefault(u => u.Id == user.EnteredByUserId);
+                }
+
+                return results;
             }
         }
 

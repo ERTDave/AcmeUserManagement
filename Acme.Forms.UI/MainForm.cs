@@ -31,6 +31,13 @@ namespace Acme.Forms.UI
             {
                 UserTabs.SelectedIndex = 1;
             }
+
+            if (UserTabs.SelectedIndex == 1)
+            {
+                var employees = EmployeeService.GetEmployees();
+
+                UsersGrid.DataSource = employees;
+            }
         }
 
         private void LogonButton_Click(object sender, EventArgs e)
@@ -54,10 +61,6 @@ namespace Acme.Forms.UI
                 IsAuthenticated = true;
 
                 UserTabs.SelectedIndex = 1;
-
-                var employees = EmployeeService.GetEmployees();
-
-                UsersGrid.DataSource = employees;
             }
             else
             {
@@ -112,6 +115,8 @@ namespace Acme.Forms.UI
 
         private void ShowAllButton_Click(object sender, EventArgs e)
         {
+            SearchText.Text = "";
+
             var employees = EmployeeService.GetEmployees();
 
             UsersGrid.DataSource = employees;

@@ -63,7 +63,8 @@ namespace Acme.Services.Implementations
                 Surname = surname,
                 WorkEmail = $"{firstname.ToLower()}.{surname.ToLower()}@ert.com",
                 PersonalEmail = $"{firstname.ToLower()}.{surname.ToLower()}@hotmail.com",
-                StartDate = DateTime.Today
+                StartDate = DateTime.Today,
+                EnteredByUserId = 1
             };
 
             return employee;
