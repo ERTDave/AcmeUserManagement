@@ -15,6 +15,10 @@ namespace Acme.Services.Implementations
         {
             EmployeeRepository = new EmployeeRepository();
         }
+        public EmployeeService(IEmployeeRepository employeeRepository)
+        {
+            EmployeeRepository = employeeRepository;
+        }
 
         public IEnumerable<Employee> GetEmployees()
         {
@@ -48,6 +52,12 @@ namespace Acme.Services.Implementations
             EmployeeRepository.Add(CreateTestEmployee("Harry", "Smith"));
             EmployeeRepository.Add(CreateTestEmployee("Ian", "Wibble"));
             EmployeeRepository.Add(CreateTestEmployee("Kevin", "Brown"));
+            EmployeeRepository.Add(CreateTestEmployee("Louise", "Lewis"));
+            EmployeeRepository.Add(CreateTestEmployee("Martin", "Kelvin"));
+            EmployeeRepository.Add(CreateTestEmployee("Nicola", "Homer"));
+            EmployeeRepository.Add(CreateTestEmployee("Peter", "Simpson"));
+            EmployeeRepository.Add(CreateTestEmployee("Rachel", "Smith"));
+            EmployeeRepository.Add(CreateTestEmployee("Rose", "Brown"));
         }
         
         public void AddEmployee(Employee employee)

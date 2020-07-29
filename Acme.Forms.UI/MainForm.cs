@@ -24,7 +24,7 @@ namespace Acme.Forms.UI
             {
                 UserTabs.SelectedIndex = 0;
 
-                MessageBox.Show(@"You must Logon to acces this area", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(@"You must Logon to access this area", @"Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             if (UserTabs.SelectedIndex == 0 && IsAuthenticated)

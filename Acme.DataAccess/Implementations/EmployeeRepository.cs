@@ -24,7 +24,6 @@ namespace Acme.DataAccess.Implementations
                     .Where(e => e.Firstname.Contains(searchText) || e.Surname.Contains(searchText) || e.WorkEmail.Contains(searchText) || e.PersonalEmail.Contains(searchText))
                     .ToList();
 
-
                 foreach (var user in results)
                 {
                     user.EnteredByUser = context.ApplicationUsers.FirstOrDefault(u => u.Id == user.EnteredByUserId);
